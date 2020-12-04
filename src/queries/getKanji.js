@@ -16,30 +16,28 @@ const getKanji = async (word) => {
       uniq([...(obj1?.[key] || []), ...(obj2?.[key] || [])]).join(link)
     );
 
-    const kAliveKanji = kanjiAlive?.kanji || {};
-    const kAliveStrokes = kAliveKanji?.strokes || {};
+    const { examples } = kanjiAlive || {};
+    const { strokes: kAliveStrokes, radical, video } = kanjiAlive || {};
 
-    const kApiKanji = kanjiApi?.kanji;
-    const kApiStrokes = kApiKanji?.strokes;
+    const { strokes: kApiStrokes } = kanjiApi || {};
 
     const merged = {
       type: 'kanji',
-      // ...kanjiAlive, // default
       word: takeFirstValidValue('word'),
       meaning: mergeArrays('meaning', ', '),
-      kanji: {
-        ...kAliveKanji, // default
-        onyomi: mergeArrays('onyomi', '、', kAliveKanji, kApiKanji),
-        kunyomi: mergeArrays('kunyomi', '、', kAliveKanji, kApiKanji),
-        strokes: {
-          ...kAliveStrokes,
-          count: takeFirstValidValue('count', kAliveStrokes, kApiStrokes),
-        },
-        references: {
-          ...kAliveKanji?.references,
-          ...kApiKanji?.references,
-        },
+      onyomi: mergeArrays('onyomi', '、', kanjiAlive, kanjiApi),
+      kunyomi: mergeArrays('kunyomi', '、', kanjiAlive, kanjiApi),
+      video,
+      strokes: {
+        ...kAliveStrokes,
+        count: takeFirstValidValue('count', kAliveStrokes, kApiStrokes),
       },
+      radical,
+      references: {
+        ...kanjiAlive?.references,
+        ...kanjiApi?.references,
+      },
+      examples,
     };
 
     return Promise.resolve(merged);
@@ -50,9 +48,13 @@ const getKanji = async (word) => {
 
 const getSingleKanji = async (options, word) => {
   try {
-    const kanji = await Word.find({ type: 'kanji', ogWord: word });
+    const kanji = await Word.findOne({ type: 'kanji', word });
+    if (kanji) return Promise.resolve(kanji);
 
-    return kanji.length ? kanji : getKanji(word);
+    const newKanji = new Word(await getKanji(word));
+    newKanji.save();
+
+    return Promise.resolve(newKanji);
   } catch (err) {
     return Promise.reject(err);
   }

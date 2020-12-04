@@ -1,3 +1,4 @@
 import Word from './wordModel';
+import KaExample from './kaExampleModel';
 
-export { Word };
+export { Word, KaExample };

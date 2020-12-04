@@ -13,14 +13,12 @@ const parseKanjiApi = ({
 } = {}) => ({
   word: kanji,
   meaning: meanings.map((meaning) => meaning.replace('-', '')),
-  kanji: {
-    kunyomi: kunReadings,
-    onyomi: onReadings,
-    strokes: { count: strokeCount },
-    references: {
-      grade,
-      jlpt,
-    },
+  kunyomi: kunReadings,
+  onyomi: onReadings,
+  strokes: { count: strokeCount },
+  references: {
+    grade,
+    jlpt,
   },
 });
 

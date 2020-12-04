@@ -14,12 +14,12 @@ const fetch = async (args) => {
 
   try {
     const response = await nodeFetch(encodeURI(`${url}${argString}`), headers);
-    if (!response.ok) throw new Error(`failed to fetch ${url}${argString}`);
+    if (!response.ok) return Promise.reject(new Error(`failed to fetch ${url}${argString}`));
 
     const json = await response.json();
     return json;
   } catch (error) {
-    return Promise.reject(error?.msg || error);
+    return Promise.reject(error);
   }
 };
 
