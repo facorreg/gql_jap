@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "allowSyntheticDefaultImports": false,
+    "baseUrl": "./",
+    "paths": {
+      "mongo": [
+        "src/mongo"
+      ],
+      "models": [
+        "src/mongo/models/index.js"
+      ],
+      "queries": [
+        "src/queries"
+      ],
+      "utils": [
+        "src/utils/index.js"
+      ],
+    }
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
