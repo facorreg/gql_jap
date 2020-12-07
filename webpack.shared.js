@@ -8,7 +8,7 @@ const config = {
     alias: {
       mongo: path.resolve(__dirname, 'src/mongo'),
       models: path.resolve(__dirname, 'src/mongo/models/index.js'),
-      queries: path.resolve(__dirname, 'src/queries'),
+      apollo: path.resolve(__dirname, 'src/apollo'),
       utils: path.resolve(__dirname, 'src/utils/index.js'),
 
       // utils: path.resolve(__dirname, 'src/utils/'),

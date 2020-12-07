@@ -13,7 +13,7 @@ module.exports = {
   moduleNameMapper: {
     mongo: '<rootDir>/src/mongo',
     models: '<rootDir>/src/mongo/models/index.js',
-    queries: '<rootDir>/src/queries',
+    apollo: '<rootDir>/src/apollo',
     utils: '<rootDir>/src/utils/index.js',
   },
 };

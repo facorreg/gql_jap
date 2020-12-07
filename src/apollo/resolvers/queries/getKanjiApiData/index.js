@@ -1,12 +1,13 @@
 import uniq from 'lodash/uniq';
 
-import { Word } from 'models';
-import { getKanjiAlive, getKanjiApi } from './getKanjiApiData';
+import { Kanji } from 'models';
+import getKanjiAlive from './getKanjiAlive';
+import getKanjiApi from './getKanjiApi';
 
-const getKanji = async (word) => {
+const getKanji = async (character) => {
   try {
-    const kanjiAlive = await getKanjiAlive(word) || {};
-    const kanjiApi = await getKanjiApi(word) || {};
+    const kanjiAlive = await getKanjiAlive(character) || {};
+    const kanjiApi = await getKanjiApi(character) || {};
 
     const takeFirstValidValue = (key, obj1 = kanjiAlive, obj2 = kanjiApi) => (
       obj1?.[key] || obj2?.[key]
@@ -22,8 +23,7 @@ const getKanji = async (word) => {
     const { strokes: kApiStrokes } = kanjiApi || {};
 
     const merged = {
-      type: 'kanji',
-      word: takeFirstValidValue('word'),
+      character: takeFirstValidValue('word'),
       meaning: mergeArrays('meaning', ', '),
       onyomi: mergeArrays('onyomi', '、', kanjiAlive, kanjiApi),
       kunyomi: mergeArrays('kunyomi', '、', kanjiAlive, kanjiApi),
@@ -46,12 +46,12 @@ const getKanji = async (word) => {
   }
 };
 
-const getSingleKanji = async (options, word) => {
+const getSingleKanji = async (character) => {
   try {
-    const kanji = await Word.findOne({ type: 'kanji', word });
+    const kanji = await Kanji.findOne({ character });
     if (kanji) return Promise.resolve(kanji);
 
-    const newKanji = new Word(await getKanji(word));
+    const newKanji = new Kanji(await getKanji(character));
     newKanji.save();
 
     return Promise.resolve(newKanji);

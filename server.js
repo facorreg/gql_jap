@@ -1,23 +1,14 @@
 import Koa from 'koa';
 import connect from 'mongo/connect';
-import KoaRouter from 'koa-router';
-import getKanji from './src/queries/getKanji';
+import { ApolloServer } from 'apollo-server-koa';
+import { schemas as typeDefs, resolvers } from 'apollo';
 
 const app = new Koa();
-const router = new KoaRouter();
+const PORT = 4000;
 
 connect('jpDb');
 
-router.get('/kanji', async (ctx) => {
-  try {
-    const body = await getKanji({}, ctx.query.word);
-    ctx.body = body;
-  } catch (err) {
-    ctx.body = { type: 'error', message: err.message };
-  }
-});
+const server = new ApolloServer({ typeDefs, resolvers });
+server.applyMiddleware({ app });
 
-app.use(router.routes())
-  .use(router.allowedMethods());
-
-app.listen(4000);
+app.listen({ port: PORT }, () => console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`));

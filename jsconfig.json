@@ -10,8 +10,8 @@
       "models": [
         "src/mongo/models/index.js"
       ],
-      "queries": [
-        "src/queries"
+      "apollo": [
+        "src/apollo"
       ],
       "utils": [
         "src/utils/index.js"

@@ -1,4 +1,5 @@
-import Word from './wordModel';
+import Kanji from './kanjiModel';
 import KaExample from './kaExampleModel';
+import Word from './wordModel';
 
-export { Word, KaExample };
+export { Kanji, KaExample, Word };
