@@ -4,11 +4,17 @@ const typeDefs = `
     reading: String
   }
 
-  type Word {
-    japanese: [Japanese]
+  type Sense {
     tags: String
     partsOfSpeech: String
-    definitions: [String]
+    definitions: String
+    examples: [String]
+  }
+
+  type Word {
+    japanese: [Japanese]
+    senses: [Sense]
+    kanjiIds: [String]
   }
 `;
 
