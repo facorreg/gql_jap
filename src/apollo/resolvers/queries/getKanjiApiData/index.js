@@ -46,9 +46,11 @@ const getKanji = async (character) => {
   }
 };
 
-const getSingleKanji = async (character) => {
+const getSingleKanji = async (character, id) => {
   try {
-    const kanji = await Kanji.findOne({ character });
+    const kanji = await Kanji.findOne({
+      $or: [{ character }, { _id: id }],
+    });
     if (kanji) return Promise.resolve(kanji);
 
     const newKanji = new Kanji(await getKanji(character));
@@ -60,4 +62,13 @@ const getSingleKanji = async (character) => {
   }
 };
 
-export default getSingleKanji;
+const getMultipleKanji = async (ids) => {
+  try {
+    const kanjiList = await Promise.all(ids.map((id) => getSingleKanji(null, id)));
+    return Promise.resolve(kanjiList);
+  } catch (err) {
+    return Promise.reject(err);
+  }
+};
+
+export { getSingleKanji, getMultipleKanji };
