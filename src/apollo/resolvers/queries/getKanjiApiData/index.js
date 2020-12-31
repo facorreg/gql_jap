@@ -19,7 +19,6 @@ const getKanji = async (character) => {
 
     const { examples } = kanjiAlive || {};
     const { strokes: kAliveStrokes, radical, video } = kanjiAlive || {};
-
     const { strokes: kApiStrokes } = kanjiApi || {};
 
     const merged = {
@@ -64,6 +63,8 @@ const getSingleKanji = async (character, id) => {
 
 const getMultipleKanji = async (ids) => {
   try {
+    if (!ids) return Kanji.find();
+
     const kanjiList = await Promise.all(ids.map((id) => getSingleKanji(null, id)));
     return Promise.resolve(kanjiList);
   } catch (err) {
