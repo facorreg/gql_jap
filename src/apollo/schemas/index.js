@@ -1,4 +1,5 @@
 import { gql } from 'apollo-server-koa';
+import example from './example';
 import kanji from './kanji';
 import word from './word';
 import words from './words';
@@ -8,6 +9,7 @@ const schema = [
   kanji,
   word,
   words,
+  example,
   queries,
 ].join('\n');
 
