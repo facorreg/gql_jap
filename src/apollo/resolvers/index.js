@@ -1,3 +1,7 @@
 import queryResolvers from './queries';
+import mutationResolvers from './mutations';
 
-export default queryResolvers;
+export default {
+  ...queryResolvers,
+  ...mutationResolvers,
+};
