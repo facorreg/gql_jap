@@ -1,5 +1,3 @@
-import Kanji from './kanjiModel';
-import KaExample from './kaExampleModel';
-import Word from './wordModel';
+import { Kanji, KaExample, Word } from './content';
 
 export { Kanji, KaExample, Word };

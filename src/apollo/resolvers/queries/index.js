@@ -1,7 +1,12 @@
-import { getSingleKanji, getMultipleKanji } from './getKanjiApiData';
-import getWord from './getWordApiData';
-import getWords from './getWords';
-import getExamples from './getExamples';
+import {
+  getSingleKanji,
+  getMultipleKanji,
+  getWord,
+  getWords,
+  getExamples,
+} from './content';
+
+import { me } from './user';
 
 const resolvers = {
   Query: {
@@ -10,6 +15,7 @@ const resolvers = {
     getWord: (_, args) => getWord(args.word),
     getWords: (_, args) => getWords(args.from, args.limit),
     getExamples: (_, args) => getExamples(args.ids),
+    me: () => me,
   },
 };
 

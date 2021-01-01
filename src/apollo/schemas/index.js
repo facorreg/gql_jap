@@ -1,15 +1,17 @@
 import { gql } from 'apollo-server-koa';
-import example from './example';
-import kanji from './kanji';
-import word from './word';
-import words from './words';
-import queries from './queries';
-
-const schema = [
+import {
+  example,
   kanji,
   word,
   words,
+} from './content';
+import queries from './queries';
+
+const schema = [
   example,
+  kanji,
+  word,
+  words,
   queries,
 ].join('\n');
 

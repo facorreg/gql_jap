@@ -4,7 +4,7 @@ import uniq from 'lodash/uniq';
 import { toKatakana, isKanji } from 'wanakana';
 import { fetch, getEnv } from 'utils';
 import { Word } from 'models';
-import getKanji from 'apollo/resolvers/queries/getKanjiApiData';
+import getKanji from 'apollo/resolvers/queries/content/getKanjiApiData';
 
 const findWordQuery = (toFind, complementary = {}) => ({
   $or: [{ 'japanese.word': toFind }, { 'japanese.reading': toFind }],
