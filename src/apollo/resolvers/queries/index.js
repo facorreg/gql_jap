@@ -6,7 +6,7 @@ import {
   getExamples,
 } from './content';
 
-import { me } from './user';
+import { me, getUser } from './user';
 
 const resolvers = {
   Query: {
@@ -15,7 +15,8 @@ const resolvers = {
     getWord: (_, args) => getWord(args.word),
     getWords: (_, args) => getWords(args.from, args.limit),
     getExamples: (_, args) => getExamples(args.ids),
-    me: () => me,
+    getUser: (_, args) => getUser(args.id),
+    me: (_, __, ctx) => me(_, __, ctx),
   },
 };
 

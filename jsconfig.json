@@ -7,6 +7,9 @@
       "mongo": [
         "src/mongo"
       ],
+      "queries": [
+        "src/apollo/resolvers/queries",
+      ],
       "models": [
         "src/mongo/models/index.js"
       ],

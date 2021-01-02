@@ -5,7 +5,8 @@ const typeDefs = `
     getWord(word: String!): [Word]
     getWords(from: Int, limit: Int): Words
     getExamples(ids: [String]!): [Example]
-    me: String
+    getUser(id: String!): User
+    me: User
   }
 `;
 

@@ -1,20 +1,17 @@
 import jwt from 'jsonwebtoken';
 import getRSAKeys from './getRSAKeys';
 
-const createJWT = (id) => {
-  const payload = { id };
+const verifyJWT = async (token) => {
   const privateKey = getRSAKeys('private');
-
   const signOptions = {
     issuer: 'JapApp backend',
     subject: 'userAuth',
     audience: 'JapApp frontend',
     expiresIn: '12h',
+    algorithms: ['HS256'],
   };
 
-  const token = jwt.sign(payload, privateKey, signOptions);
-
-  return token;
+  return jwt.verify(token, privateKey, signOptions);
 };
 
-export default createJWT;
+export default verifyJWT;

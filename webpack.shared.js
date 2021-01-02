@@ -10,8 +10,7 @@ const config = {
       models: path.resolve(__dirname, 'src/mongo/models/index.js'),
       apollo: path.resolve(__dirname, 'src/apollo'),
       utils: path.resolve(__dirname, 'src/utils/index.js'),
-
-      // utils: path.resolve(__dirname, 'src/utils/'),
+      queries: path.resolve(__dirname, 'src/apollo/resolvers/queries'),
     },
   },
 };
