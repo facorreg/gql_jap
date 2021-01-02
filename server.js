@@ -14,7 +14,9 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: async ({ ctx }) => {
-    const token = ctx.request.header.authorization;
+    const rawToken = ctx.request.header.authorization || '';
+    const [, token] = rawToken.match(/^Bearer (.+)$/);
+
     if (!token) return Promise.resolve({});
 
     try {
