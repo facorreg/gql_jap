@@ -8,6 +8,10 @@ import {
 import {
   user,
 } from './user';
+import {
+  decks,
+} from './cards';
+
 import input from './input';
 import queries from './queries';
 import mutations from './mutations';
@@ -19,6 +23,7 @@ const schema = [
   words,
   user,
   input,
+  decks,
   queries,
   mutations,
 ].join('\n');

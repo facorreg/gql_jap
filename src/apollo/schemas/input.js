@@ -9,6 +9,11 @@ const typeDefs = `
     identifier: String!
     password: String!
   }
+
+  input CreateDeckInput { 
+    name: String!
+    type: String!
+  }
 `;
 
 export default typeDefs;
