@@ -4,6 +4,11 @@ const typeDefs = `
     password: String!
     email: String!
   }
+
+  input ConnectUserInput {
+    identifier: String!
+    password: String!
+  }
 `;
 
 export default typeDefs;

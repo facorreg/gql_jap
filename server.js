@@ -2,13 +2,13 @@ import Koa from 'koa';
 import connect from 'mongo/connect';
 import { ApolloServer } from 'apollo-server-koa';
 import { schemas as typeDefs, resolvers } from 'apollo';
-import { decodeJWT, verifyJWT } from 'utils';
+import { decodeJWT, verifyJWT, getEnv } from 'utils';
 import getUser from 'queries/user/getUser';
 
 const app = new Koa();
 const PORT = 4000;
 
-connect('jpDb');
+connect(getEnv('DB_NAME'));
 
 const server = new ApolloServer({
   typeDefs,

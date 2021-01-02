@@ -1,4 +1,4 @@
 import createUser from './createUser';
+import connect from './connect';
 
-// eslint-disable-next-line import/prefer-default-export
-export { createUser };
+export { createUser, connect };
