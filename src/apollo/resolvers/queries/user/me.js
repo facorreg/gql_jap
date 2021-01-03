@@ -1,1 +1,1 @@
-export default (_, __, { user } = {}) => user;
+export default (_, __, user) => user;

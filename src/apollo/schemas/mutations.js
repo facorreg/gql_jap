@@ -3,6 +3,7 @@ const typeDefs = `
     createUser(input: CreateUserInput): UserWithJWT!
     connect(input: ConnectUserInput): UserWithJWT!
     createDeck(input: CreateDeckInput): Deck!
+    deleteDeck(id: String!): Deleted!
   }
 `;
 

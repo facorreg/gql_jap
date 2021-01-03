@@ -1,4 +1,5 @@
 import { gql } from 'apollo-server-koa';
+import shared from './shared';
 import {
   example,
   kanji,
@@ -17,6 +18,7 @@ import queries from './queries';
 import mutations from './mutations';
 
 const schema = [
+  shared,
   example,
   kanji,
   word,

@@ -7,6 +7,7 @@ const typeDefs = `
     getExamples(ids: [String]!): [Example]
     getUser(id: String!): User
     me: User
+    getUserDecks: [Deck]
   }
 `;
 
