@@ -6,6 +6,7 @@ const typeDefs = `
     getWords(from: Int, limit: Int): Words
     getExamples(ids: [String]!): [Example]
     getUser(id: String!): User
+    getCards: [Card]
     me: User
     getUserDecks: [Deck]
   }

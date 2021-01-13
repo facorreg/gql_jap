@@ -14,6 +14,13 @@ const typeDefs = `
     name: String!
     type: String!
   }
+
+  input CreateCardInput {
+    deckId: String!
+    value: String!
+    type: String
+    repeat: String
+  }
 `;
 
 export default typeDefs;

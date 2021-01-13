@@ -11,6 +11,7 @@ import {
 } from './user';
 import {
   decks,
+  cards,
 } from './cards';
 
 import input from './input';
@@ -25,6 +26,7 @@ const schema = [
   words,
   user,
   input,
+  cards,
   decks,
   queries,
   mutations,

@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 
 const cardSchema = mongoose.Schema({
   userId: mongoose.Types.ObjectId,
+  deckId: mongoose.Types.ObjectId,
   type: String,
   value: String,
   new: Boolean,

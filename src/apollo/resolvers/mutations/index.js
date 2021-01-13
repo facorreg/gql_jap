@@ -1,5 +1,5 @@
 import { createUser, connect } from './user';
-import { createDeck, deleteDeck } from './cards';
+import { createDeck, deleteDeck, createCard } from './cards';
 
 const resolvers = {
   Mutation: {
@@ -7,6 +7,7 @@ const resolvers = {
     connect: (_, args) => connect(args.input),
     createDeck: (_, args, ctx) => createDeck(args.input, ctx),
     deleteDeck: (_, args, ctx) => deleteDeck(args.id, ctx),
+    createCard: (_, args, ctx) => createCard(args.input, ctx),
   },
 };
 
